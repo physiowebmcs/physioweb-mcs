@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
    <title>Contact Us | </title> 
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="style.css">
    </head>
 <body>
   <ul class="nav-links">
@@ -18,5 +18,37 @@
     <li class="downward"><a href="Contact Us.html">Contact Us</a></li>
   </ul>
   <h1 class="welcome"><font size="7">Contact Us</font></h1>
+  <div class="container">
+    <div class="entryarea">
+      <input type="text" required>
+      <div class="labelline">Enter your name</div>
+    </div>
+    <div class="entryarea2">
+      <input type="text" required>
+      <div class="labelline">Phone Number</div>
+    </div>
+    <div class="entryarea3">
+      <input type="text" required>
+      <div class="labelline">Email</div>
+    </div>
+    <a href="#" class="sub" style="--clr:#1e9bff" onclick="openpopup()"><span>Submit</span><i></i></a>
+    <div class="popup" id="popup">
+      <img src="404-tick.png">
+      <h2>Thank You!</h2>
+      <p>Your details have been successfully submitted. Thanks!</p>
+      <button type="button" onclick="closepopup()">OK</button>
+    </div>
+  </div>
+  <script>
+    let popup = document.getElementById("popup");
+
+    function openpopup(){
+      popup.classList.add("open-popup");
+    }
+
+    function closepopup(){
+      popup.classList.remove("open-popup");
+    }
+  </script>
 </body>
 </html>
