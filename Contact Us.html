@@ -20,17 +20,19 @@
   <h1 class="welcome"><font size="7">Contact Us</font></h1>
   <div class="container">
     <div class="entryarea">
-      <input type="text" required>
-      <div class="labelline">Enter your name</div>
+      <input type="text" required="required">
+      <div class="labelline">Enter your name*</div>
     </div>
     <div class="entryarea2">
-      <input type="text" required>
-      <div class="labelline">Phone Number</div>
+      <input id="Phone" type="tel" required="required">
+      <div class="labelline">Phone Number*</div>
     </div>
     <div class="entryarea3">
-      <input type="text" required>
-      <div class="labelline">Email</div>
+      <input type="text" required="required">
+      <div class="labelline">Email*</div>
+
     </div>
+    <br><p>Inputs marked with * are neccery</p><br>
     <a href="#" class="sub" style="--clr:#1e9bff" onclick="openpopup()"><span>Submit</span><i></i></a>
     <div class="popup" id="popup">
       <img src="404-tick.png">
@@ -49,6 +51,9 @@
     function closepopup(){
       popup.classList.remove("open-popup");
     }
+  </script>
+  <script>
+
   </script>
 </body>
 </html>
