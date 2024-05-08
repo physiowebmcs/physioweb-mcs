@@ -1,82 +1,308 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-   <title>Contact Us | </title> 
-    <link rel="stylesheet" href="style.css">
-   </head>
-<body>
-  <ul class="nav-links">
-    <ul class="logo">
-        <li class="Logo"><font size = "7">Logo</font></li>
-    </ul>
-    <li><a href="index.html">Home</a></li>
-    <li class="center"><a href="#">About Us</a></li>
-    <li class="center"><a href="occupationaltherapy.html">Occupational Therapy</a></li>
-    <li class="upward"><a href="Physiotherapy.html">Physiotherapy</a></li>
-    <li class="forward"><a href="NDIS.html">NDIS</a></li>
-    <li class="downward"><a href="Contact Us.html">Contact Us</a></li>
-  </ul>
-  <h1 class="welcome"><font size="7">Contact Us</font></h1>
-  <div class="container">
-    <div class="entryarea">
-      <input id="inpname" type="text" required="required" onsubmit="return emptyinput()">
-      <span id="name" class="labelline">Enter your name</span>
-    </div>
-    <div class="entryarea2">
-      <input id="phone" type="tel" required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onclick="placeholder()" placeholder="xxx-xxx-xxxx">
-      <span id="num" class="labelline">Phone Number</span>
-    </div>
-    <div class="entryarea3">
-      <input id="inpmail" type="text" required="required" onsubmit="return emptyinput()">
-      <span id="mail" class="labelline">Email</span>
-    </div>
-    <a href="#" id="sub" class="sub" style="--clr:#1e9bff"><span>Submit</span><i></i></a>
-    <div class="popup" id="popup">
-      <img src="404-tick.png">
-      <h2>Thank You!</h2>
-      <p>Your details have been successfully submitted. Thanks!</p>
-      <button type="button" onclick="closepopup()">OK</button>
-    </div>
-  </div>
-  <script>
-    let popup = document.getElementById("popup");
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1c2841;
+}
 
-    function openpopup(){
-      popup.classList.add("open-popup");
-    }
+.welcome {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #000000;
+  }
 
-    function closepopup(){
-      popup.classList.remove("open-popup");
-    }
-    var btn = document.getElementById('sub');
-      btn.addEventListener('click',emptyinput);
-      btn.addEventListener('click',openpopup);
+#phone{
+  outline: 0;
+}
 
-    function emptyinput(){
-      var a = document.getElementById("phone").value;
-      var b = document.getElementById("inpname").value;
-      var c = document.getElementById("inpmail").value;
-      var letters = /^[a-zA-Z]/$;
-      if(a=="" || b=="" || c==""){
-        document.getElementById("num").innerHTML="** Please fill mobile number";
-        document.getElementById("name").innerHTML="** Please fill you name";
-        document.getElementById("mail").innerHTML="** Please fill email id";
-        return false;
-      }
-      else if(ValidityState==false){
-        return false;
-      }
-      else if(a.value.length>40){
-        alert("** Length must be less than 40 characters!");
-        return false;
-      }
-      else if(!b.value.match(letters)){
-        alert("Name must contain only alphabets!");
-        return false;
-      }
-      return true;
-    }
-  </script>
-</body>
-</html>
+#phone:valid{
+  border-color: #66ff00;
+}
+
+#phone:focus:invalid{
+  border-color: red;
+}
+
+#phone::placeholder{
+  visibility: hidden;
+}
+
+#phone:focus::placeholder{
+  visibility: visible;
+}
+
+.popup{
+  width: 400px;
+  background: #ffffff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  z-index: 1112;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.open-popup{
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup img{
+  width: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.popup h2{
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+
+.popup button{
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background: #6fd649;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+}
+
+.sub{
+  position: relative;
+  left: 250px;
+  top: 20px;
+  background: #ffffff;
+  color:#ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  padding: 10px 30px;
+  transition: 0.5s;
+}
+
+.sub:hover{
+  background: var(--clr);
+  color: var(--clr);
+  letter-spacing: 0.25em;
+  box-shadow: 0 0 35px var(--clr);
+}
+
+.sub:before{
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background:#1c2841;
+}
+
+.sub span{
+  position: relative;
+  z-index: 1;
+}
+
+.sub i{
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.sub i::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 80%;
+  width: 10px;
+  height: 4px;
+  background:#1c2841;
+  transform: translateX(-50%) skewX(325deg);
+  transition: 0.5s;
+}
+
+.sub:hover i::before{
+  width: 20px;
+  left: 20%;
+}
+
+.sub i::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 10px;
+  height: 4px;
+  background:#1c2841;
+  transform: translateX(-50%) skewX(325deg);
+  transition: 0.5s;
+}
+
+.sub:hover i::after{
+  width: 20px;
+  left: 80%;
+}
+
+.container{
+  width: 680px;
+}
+
+.entryarea{
+  position: relative;
+  height: 120px;
+  line-height: 90px;
+}
+
+.entryarea2{
+  position: relative;
+  height: 120px;
+  line-height: 90px;
+}
+
+.entryarea3{
+  position: relative;
+  height: 120px;
+  line-height: 90px;
+}
+
+input{
+  position: absolute;
+  width: 100%;
+  outline: none;
+  font-size: 1.8em;
+  padding: 0 30px;
+  line-height: 80px;
+  border-radius: 10px;
+  border: 2px solid;
+  transition: 0.1s ease;
+  background: transparent;
+  z-index: 1111;
+}
+
+input:focus,
+input:valid{
+  color: #66ff00;
+  border: 4px solid #66ff00;
+}
+
+input:focus + .labelline,
+input:valid + .labelline{
+  color: #66ff00;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 12px;
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 1111;
+}
+
+
+.labelline{
+  position: absolute;
+  font-size: 1.5em;
+  color: #ffffff;
+  padding: 0 25px;
+  margin: 0 20px;
+  background-color: #1c2841;
+  transition: 0.2s ease;
+}
+
+.introduction{
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    color: #000000;
+}
+
+.nav-links li.Logo{
+    margin-right: auto;
+}
+
+.nav-links{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 50px 60px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.nav-links li{
+  list-style: none;
+  margin: 0 12px;
+}
+.nav-links li a{
+  position: relative;
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 6px 0;
+  text-decoration: none;
+}
+
+.nav-links li a:before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #34efdf;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+.nav-links li a:hover:before{
+  width: 100%;
+}
+.nav-links li.center a:before{
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nav-links li.upward a:before{
+  width: 100%;
+  bottom: -5px;
+  opacity: 0;
+}
+.nav-links li.upward a:hover:before{
+  bottom: 0px;
+  opacity: 1;
+}
+.nav-links li.forward a:before{
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+.nav-links li.forward a:hover:before{
+  transform: scaleX(1);
+  transform-origin: left;
+}
