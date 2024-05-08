@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
    <title>Contact Us | </title> 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
    </head>
 <body>
   <ul class="nav-links">
@@ -24,7 +24,7 @@
       <div class="labelline">Enter your name*</div>
     </div>
     <div class="entryarea2">
-      <input id="Phone" type="tel" required="required">
+      <input id="Phone" type="tel" required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onclick="placeholder()" placeholder="xxx-xxx-xxxx">
       <div class="labelline">Phone Number*</div>
     </div>
     <div class="entryarea3">
@@ -51,9 +51,10 @@
     function closepopup(){
       popup.classList.remove("open-popup");
     }
-  </script>
-  <script>
 
+    function placeholder(){
+      
+    }
   </script>
 </body>
 </html>
