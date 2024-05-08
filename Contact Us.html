@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
    <title>Contact Us | </title> 
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="style.css">
    </head>
 <body>
   <ul class="nav-links">
@@ -20,20 +20,18 @@
   <h1 class="welcome"><font size="7">Contact Us</font></h1>
   <div class="container">
     <div class="entryarea">
-      <input type="text" required="required">
-      <div class="labelline">Enter your name*</div>
+      <input id="inpname" type="text" required="required" onsubmit="return emptyinput()">
+      <span id="name" class="labelline">Enter your name</span>
     </div>
     <div class="entryarea2">
-      <input id="Phone" type="tel" required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onclick="placeholder()" placeholder="xxx-xxx-xxxx">
-      <div class="labelline">Phone Number*</div>
+      <input id="phone" type="tel" required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onclick="placeholder()" placeholder="xxx-xxx-xxxx">
+      <span id="num" class="labelline">Phone Number</span>
     </div>
     <div class="entryarea3">
-      <input type="text" required="required">
-      <div class="labelline">Email*</div>
-
+      <input id="inpmail" type="text" required="required" onsubmit="return emptyinput()">
+      <span id="mail" class="labelline">Email</span>
     </div>
-    <br><p>Inputs marked with * are neccery</p><br>
-    <a href="#" class="sub" style="--clr:#1e9bff" onclick="openpopup()"><span>Submit</span><i></i></a>
+    <a href="#" id="sub" class="sub" style="--clr:#1e9bff"><span>Submit</span><i></i></a>
     <div class="popup" id="popup">
       <img src="404-tick.png">
       <h2>Thank You!</h2>
@@ -51,9 +49,33 @@
     function closepopup(){
       popup.classList.remove("open-popup");
     }
+    var btn = document.getElementById('sub');
+      btn.addEventListener('click',emptyinput);
+      btn.addEventListener('click',openpopup);
 
-    function placeholder(){
-      
+    function emptyinput(){
+      var a = document.getElementById("phone").value;
+      var b = document.getElementById("inpname").value;
+      var c = document.getElementById("inpmail").value;
+      var letters = /^[a-zA-Z]/$;
+      if(a=="" || b=="" || c==""){
+        document.getElementById("num").innerHTML="** Please fill mobile number";
+        document.getElementById("name").innerHTML="** Please fill you name";
+        document.getElementById("mail").innerHTML="** Please fill email id";
+        return false;
+      }
+      else if(ValidityState==false){
+        return false;
+      }
+      else if(a.value.length>40){
+        alert("** Length must be less than 40 characters!");
+        return false;
+      }
+      else if(!b.value.match(letters)){
+        alert("Name must contain only alphabets!");
+        return false;
+      }
+      return true;
     }
   </script>
 </body>
